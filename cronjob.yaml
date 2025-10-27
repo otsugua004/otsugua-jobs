@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hola-mundo-cronjob
+  namespace: otsugua04-dev
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      containers:
+        - name: hola-mundo-cronjob
+          image: busybox:latest
+          command: ["/bin/sh", "-c"]
+          args: |
+            echo "Hola Mundo CRON JOB!"
+            sleep 10s
+
+      restartPolicy: Never
+  backoffLimit: 3  # Número de reintentos en caso de fallo
