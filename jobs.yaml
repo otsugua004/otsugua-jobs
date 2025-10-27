@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hola-mundo-job
+  namespace: otsugua04-dev
+spec:
+  template:
+    spec:
+      containers:
+        - name: hola-mundo
+          image: busybox:latest
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hola Mundo!'"]
+
+      restartPolicy: Never
+  backoffLimit: 3  # Número de reintentos en caso de fallo
