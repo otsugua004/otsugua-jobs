@@ -7,13 +7,15 @@ spec:
   schedule: "*/1 * * * *"
   jobTemplate:
     spec:
-      containers:
-        - name: hola-mundo-cronjob
-          image: busybox:latest
-          command: ["/bin/sh", "-c"]
-          args: |
-            echo "Hola Mundo CRON JOB!"
-            sleep 10s
-
-      restartPolicy: Never
-  backoffLimit: 3  # Número de reintentos en caso de fallo
+      template:
+        spec:
+          containers:
+            - name: hola-mundo-cronjob-container
+              image: busybox:latest
+              command: ["/bin/sh", "-c"]
+              args:
+              - |
+                sleep 10
+                echo "hola mundo"
+          restartPolicy: Never
+  backoffLimit: 2  # Número de reintentos en caso de fallo

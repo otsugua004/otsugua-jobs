@@ -4,17 +4,17 @@ metadata:
   name: hola-mundo-job
   namespace: otsugua04-dev
 spec:
-  commpletions: 10
-  parallelism: 2
+  completitions: 10
+  parallelism: 3
   template:
     spec:
       containers:
-        - name: hola-mundo
+        - name: hola-mundo-job-container
           image: busybox:latest
           command: ["/bin/sh", "-c"]
-          args: |
-            echo "Hola Mundo!"
-            sleep 10s
-
+          args:
+          - |
+            sleep 10
+            echo "hola mundo"
       restartPolicy: Never
-  backoffLimit: 3  # Número de reintentos en caso de fallo
+  backoffLimit: 2  # Número de reintentos en caso de fallo
