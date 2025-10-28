@@ -28,4 +28,5 @@ jobs:
       - name: Deploy files
         run: |
           oc project otsugua04-dev
-          oc apply -f ./
+          oc apply -f ./jobs.yaml
+          oc apply -f ./cronjob.yaml
